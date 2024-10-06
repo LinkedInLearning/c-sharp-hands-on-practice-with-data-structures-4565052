@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Inventory Management</h1>
+
+    <input type="text" id="productCode" placeholder="Product Code" />
+    <input type="text" id="name" placeholder="Item Name" />
+    <input type="text" id="description" placeholder="Description" />
+    <input type="number" id="quantity" placeholder="Quantity" />
+    <button id="addButton">Add Item</button>
+
+    <h2>Inventory List</h2>
+    <ul id="inventoryList"></ul>
+  </div>
+
+  <script>
+    const apiUrl = '/api/inventory';
+
+    document.getElementById('addButton').addEventListener('click', addItem);
+    fetchInventory();
+
+    async function fetchInventory() {
+      const response = await fetch(apiUrl);
+      const items = await response.json();
+      const inventoryList = document.getElementById('inventoryList');
+      inventoryList.innerHTML = '';
+      items.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.innerText = `${item.name} (${item.productCode}): ${item.quantity} units`;
+        listItem.setAttribute('data-productCode', item.productCode);
+
+        const removeButton = document.createElement('button');
+        removeButton.innerText = 'Remove';
+        removeButton.className = 'removeButton';
+        removeButton.addEventListener('click', () => removeItem(item.productCode));
+
+        listItem.appendChild(removeButton);
+        inventoryList.appendChild(listItem);
+      });
+    }
+
+    async function addItem() {
+      const productCode = document.getElementById('productCode').value;
+      const name = document.getElementById('name').value;
+      const description = document.getElementById('description').value;
+      const quantity = parseInt(document.getElementById('quantity').value);
+
+      const newItem = { productCode, name, description, quantity };
+
+      await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newItem)
+      });
+
+      fetchInventory();
+    }
+
+    async function removeItem(productCode) {
+      await fetch(`${apiUrl}/${productCode}`, {
+        method: 'DELETE'
+      });
+      fetchInventory();
+    }
+  </script>
+</body>
+
+</html>
