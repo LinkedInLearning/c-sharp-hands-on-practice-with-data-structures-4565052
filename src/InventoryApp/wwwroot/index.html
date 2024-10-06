@@ -68,11 +68,11 @@
     }
 
     async function removeItem(productCode) {
-      await fetch(`${apiUrl}/${productCode}`, {
-        method: 'DELETE'
-      });
-      fetchInventory();
-    }
+        await fetch(`${apiUrl}/${productCode}`, {
+          method: 'DELETE'
+        });
+        fetchInventory();
+      }
   </script>
 </body>
 

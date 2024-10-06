@@ -1,70 +1,94 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #2d2d2d;
+  color: #e0e0e0;
   margin: 0;
   padding: 0;
 }
 
 .container {
-  max-width: 600px;
-  margin: 50px auto;
+  max-width: 700px;
+  margin: 60px auto;
   padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #383838;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  color: #f1f1f1;
 }
 
 h1 {
   text-align: center;
-  color: #007bff;
+  font-size: 36px;
+  color: #ff6363;
+  margin-bottom: 20px;
 }
 
-input {
-  display: block;
-  width: calc(100% - 20px);
-  margin: 10px 0;
+input[type="text"],
+input[type="number"] {
+  width: calc(50% - 10px);
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  margin: 10px 5px;
+  background-color: #4d4d4d;
+  border: none;
+  border-radius: 5px;
+  color: #f1f1f1;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: #b0b0b0;
 }
 
 button {
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
+  padding: 12px 20px;
+  margin: 10px 5px;
+  background-color: #ff6363;
+  color: #f1f1f1;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #ff4949;
 }
 
 ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin-top: 20px;
 }
 
 li {
-  padding: 10px;
-  margin: 5px 0;
-  background: #e9ecef;
-  border-radius: 4px;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: #464646;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+li:nth-child(even) {
+  background-color: #515151;
+}
+
 .removeButton {
-  background-color: #dc3545;
-  color: white;
+  padding: 6px 12px;
+  background-color: #ff4949;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  color: #f1f1f1;
   cursor: pointer;
 }
 
 .removeButton:hover {
-  background-color: #c82333;
+  background-color: #ff2f2f;
+}
+
+input:focus,
+button:focus {
+  outline: 2px solid #ff6363;
 }
