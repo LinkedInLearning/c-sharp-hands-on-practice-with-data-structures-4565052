@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "Hash": "lhLJsffpdU1qFiMb999JMN68Ma+9cmOAgE/Lwg8TvGU=",
+  "Source": "ShoppingCartApp",
+  "BasePath": "_content/ShoppingCartApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ShoppingCartApp/wwwroot",
+      "Source": "ShoppingCartApp",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/ShoppingCartApp/wwwroot/",
+      "BasePath": "_content/ShoppingCartApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/ShoppingCartApp/wwwroot/index.html",
+      "SourceId": "ShoppingCartApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/ShoppingCartApp/wwwroot/",
+      "BasePath": "_content/ShoppingCartApp",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/index.html"
+    },
+    {
+      "Identity": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/ShoppingCartApp/wwwroot/styles.css",
+      "SourceId": "ShoppingCartApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/ShoppingCartApp/wwwroot/",
+      "BasePath": "_content/ShoppingCartApp",
+      "RelativePath": "styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/styles.css"
+    }
+  ]
+}

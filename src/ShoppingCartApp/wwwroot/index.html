@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Shopping Cart</h1>
+    <h2>Products</h2>
+    <ul id="productList"></ul>
+
+    <h2>Your Cart</h2>
+    <ul id="cartList"></ul>
+    <p id="cartTotal"></p>
+  </div>
+
+  <script>
+    const productsApiUrl = '/api/products';
+    const cartApiUrl = '/api/cart';
+    const cartTotalApiUrl = '/api/cart/total';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchProducts();
+      fetchCart();
+    });
+
+    async function fetchProducts() {
+      const response = await fetch(productsApiUrl);
+      const products = await response.json();
+      const productList = document.getElementById('productList');
+      productList.innerHTML = '';
+      products.forEach(product => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `${product.name} - $${product.price.toFixed(2)} <button onclick="addToCart(${product.id})">Add to Cart</button>`;
+        productList.appendChild(listItem);
+      });
+    }
+
+    async function addToCart(productId) {
+      await fetch(`${cartApiUrl}/${productId}`, {
+        method: 'POST'
+      });
+      fetchCart();
+    }
+
+    async function fetchCart() {
+      const response = await fetch(cartApiUrl);
+      const cartItems = await response.json();
+      const cartList = document.getElementById('cartList');
+      const cartTotalElement = document.getElementById('cartTotal');
+      cartList.innerHTML = '';
+      cartItems.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `${item.productName} - $${item.price.toFixed(2)} x ${item.quantity} (Total: $${item.totalPrice.toFixed(2)}) <button onclick="removeFromCart(${item.id})">Remove</button>`;
+        cartList.appendChild(listItem);
+      });
+
+      const totalResponse = await fetch(cartTotalApiUrl);
+      const total = await totalResponse.json();
+      cartTotalElement.innerText = `Total: $${total.toFixed(2)}`;
+    }
+
+    async function removeFromCart(id) {
+      await fetch(`${cartApiUrl}/${id}`, {
+        method: 'DELETE'
+      });
+      fetchCart();
+    }
+  </script>
+</body>
+
+</html>
