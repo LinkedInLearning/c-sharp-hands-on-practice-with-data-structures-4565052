@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inventory Management</title>
+  <title>Inventory and Shopping Cart</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -16,22 +16,28 @@
     <input type="text" id="name" placeholder="Item Name" />
     <input type="text" id="description" placeholder="Description" />
     <input type="number" id="quantity" placeholder="Quantity" />
+    <input type="number" id="price" placeholder="Price" step="0.01" />
     <button id="addButton">Add Item</button>
 
     <h2>Inventory List</h2>
-    <input type="text" id="searchInput" placeholder="Search by Product Code" />
     <ul id="inventoryList"></ul>
+
+    <h2>Shopping Cart</h2>
+    <ul id="cartList"></ul>
+    <h3>Total Items: <span id="cartTotal"></span></h3>
+    <h3>Total Price: $<span id="cartTotalPrice"></span></h3>
   </div>
 
   <script>
-    const apiUrl = '/api/inventory';
+    const inventoryApiUrl = '/api/inventory';
+    const cartApiUrl = '/api/cart';
 
     document.getElementById('addButton').addEventListener('click', addItem);
-    document.getElementById('searchInput').addEventListener('input', searchInventory);
     fetchInventory();
+    fetchCart();
 
     async function fetchInventory() {
-      const response = await fetch(apiUrl);
+      const response = await fetch(inventoryApiUrl);
       const items = await response.json();
       displayInventory(items);
     }
@@ -44,12 +50,12 @@
         listItem.innerText = `${item.name} (${item.productCode}): ${item.quantity} units`;
         listItem.setAttribute('data-productCode', item.productCode);
 
-        const removeButton = document.createElement('button');
-        removeButton.innerText = 'Remove';
-        removeButton.className = 'removeButton';
-        removeButton.addEventListener('click', () => removeItem(item.productCode));
+        const addButton = document.createElement('button');
+        addButton.innerText = 'Add to Cart';
+        addButton.className = 'addButton';
+        addButton.addEventListener('click', () => addToCart(item.productCode));
 
-        listItem.appendChild(removeButton);
+        listItem.appendChild(addButton);
         inventoryList.appendChild(listItem);
       });
     }
@@ -59,10 +65,11 @@
       const name = document.getElementById('name').value;
       const description = document.getElementById('description').value;
       const quantity = parseInt(document.getElementById('quantity').value);
+      const price = parseFloat(document.getElementById('price').value);
 
-      const newItem = { productCode, name, description, quantity };
+      const newItem = { productCode, name, description, quantity, price };
 
-      await fetch(apiUrl, {
+      await fetch(inventoryApiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -73,24 +80,65 @@
       fetchInventory();
     }
 
-    async function removeItem(productCode) {
-      await fetch(`${apiUrl}/${productCode}`, {
-        method: 'DELETE'
+    async function addToCart(productCode) {
+      const response = await fetch(`${cartApiUrl}?productCode=${productCode}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
-      fetchInventory();
+
+      if (response.ok) {
+        fetchCart();
+        fetchInventory();
+      } else {
+        const error = await response.text();
+        alert(error); 
+      }
     }
 
-    async function searchInventory() {
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      const response = await fetch(apiUrl);
+    async function fetchCart() {
+      const response = await fetch(cartApiUrl);
       const items = await response.json();
+      displayCart(items);
+    }
 
-      const filteredItems = items.filter(item => {
-        return item.productCode.toLowerCase().includes(searchTerm) ||
-          item.name.toLowerCase().includes(searchTerm);
+    function displayCart(items) {
+      const cartList = document.getElementById('cartList');
+      const cartTotal = document.getElementById('cartTotal');
+      const cartTotalPrice = document.getElementById('cartTotalPrice');
+      cartList.innerHTML = '';
+      let totalItems = 0;
+      let totalPrice = 0;
+
+      items.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.innerText = `${item.productName} (${item.id}): ${item.quantity} units - $${item.totalPrice.toFixed(2)}`;
+
+        const removeButton = document.createElement('button');
+        removeButton.innerText = 'Remove';
+        removeButton.className = 'removeButton';
+        removeButton.addEventListener('click', () => removeFromCart(item.id));
+
+        listItem.appendChild(removeButton);
+        cartList.appendChild(listItem);
+        totalItems += item.quantity;
+        totalPrice += item.quantity * item.price;
       });
 
-      displayInventory(filteredItems);
+      cartTotal.innerText = totalItems;
+      cartTotalPrice.innerText = totalPrice.toFixed(2);
+    }
+
+    async function removeFromCart(productCode) {
+      const response = await fetch(`${cartApiUrl}/${productCode}`, {
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+        fetchCart();
+        fetchInventory();
+      }
     }
   </script>
 </body>
