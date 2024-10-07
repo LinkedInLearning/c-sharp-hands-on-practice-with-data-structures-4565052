@@ -1,4 +1,3 @@
-using ShoppingCartApp.Models;
 using ShoppingCartApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,11 +9,9 @@ var app = builder.Build();
 
 app.UseStaticFiles();
 
-// Get all available products
 app.MapGet("/api/products", (ProductService productService) =>
     productService.GetAllProducts());
 
-// Add a product to the cart
 app.MapPost("/api/cart/{productId}", (CartService cartService, ProductService productService, int productId) =>
 {
   var product = productService.GetProductById(productId);
@@ -27,11 +24,9 @@ app.MapPost("/api/cart/{productId}", (CartService cartService, ProductService pr
   return Results.Created($"/api/cart/{cartItem.Id}", cartItem);
 });
 
-// Get all items in the cart
 app.MapGet("/api/cart", (CartService cartService) =>
     cartService.GetAll());
 
-// Remove an item from the cart
 app.MapDelete("/api/cart/{id}", (CartService cartService, int id) =>
 {
   if (cartService.RemoveFromCart(id))

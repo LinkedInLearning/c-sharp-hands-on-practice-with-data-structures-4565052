@@ -8,51 +8,22 @@ namespace ShoppingCartApp.Services
 
     public IEnumerable<CartItem> GetAll()
     {
-      return _cart;
+      return null;
     }
 
     public CartItem AddToCart(Product product)
     {
-      var existingItem = _cart.FirstOrDefault(i => i.ProductName == product.Name);
-
-      if (existingItem != null)
-      {
-        existingItem.Quantity++;
-        return existingItem;
-      }
-      else
-      {
-        var newItem = new CartItem
-        {
-          Id = product.Id,
-          ProductName = product.Name,
-          Price = product.Price,
-          Quantity = 1
-        };
-        _cart.Add(newItem);
-        return newItem;
-      }
+      return null;
     }
 
     public bool RemoveFromCart(int id)
     {
-      var item = _cart.FirstOrDefault(i => i.Id == id);
-      if (item != null)
-      {
-        item.Quantity--;
-
-        if (item.Quantity == 0)
-        {
-          _cart.Remove(item);
-        }
-        return true;
-      }
       return false;
     }
 
     public decimal GetCartTotal()
     {
-      return _cart.Sum(i => i.TotalPrice);
+      return 0;
     }
   }
 }
