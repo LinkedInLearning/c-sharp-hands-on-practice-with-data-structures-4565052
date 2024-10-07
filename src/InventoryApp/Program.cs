@@ -1,6 +1,5 @@
 using InventoryApp.Models;
 using InventoryApp.Services;
-using InventoryApp.Converters;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +8,6 @@ builder.Services.AddSingleton<InventoryService>();
 builder.Services.AddSingleton<CartService>();
 
 var app = builder.Build();
-var cartItemToInventoryItemConverter = new CartItemToInventoryItemConverter();
 
 app.UseStaticFiles();
 
@@ -39,35 +37,13 @@ app.MapGet("/api/cart", (CartService cartService) =>
 
 app.MapPost("/api/cart", (CartService cartService, InventoryService inventoryService, [FromQuery] string productCode) =>
 {
-  var item = inventoryService.GetByProductCode(productCode);
-  if (item != null && item.Quantity > 0)
-  {
-    cartService.AddToCart(item);
-    inventoryService.RemoveOne(productCode);
-    return Results.Ok(cartService.GetAll());
-  }
+  // TODO: Add item to cart and remove from inventory
   return Results.NotFound("Item not available or out of stock.");
 });
 
 app.MapDelete("/api/cart/{productCode}", (CartService cartService, InventoryService inventoryService, string productCode) =>
 {
-  var cartItemRemoved = cartService.RemoveFromCart(productCode);
-  if (cartItemRemoved != null)
-  {
-    var inventoryItem = inventoryService.GetByProductCode(productCode);
-    if (inventoryItem != null)
-    {
-      inventoryItem.Quantity = 1;
-      inventoryService.Add(inventoryItem);
-    }
-    else
-    {
-      inventoryItem = cartItemToInventoryItemConverter.Convert(cartItemRemoved);
-      inventoryItem.Quantity = 1;
-      inventoryService.Add(inventoryItem);
-    }
-    return Results.Ok(cartService.GetAll());
-  }
+  // TODO: Remove item from cart and restock inventory
   return Results.NotFound("Item not found in cart.");
 });
 
