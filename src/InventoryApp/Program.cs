@@ -54,21 +54,11 @@ app.MapDelete("/api/cart/{productCode}", (CartService cartService, InventoryServ
   var cartItemRemoved = cartService.RemoveFromCart(productCode);
   if (cartItemRemoved != null)
   {
-    var inventoryItem = inventoryService.GetByProductCode(productCode);
-    if (inventoryItem != null)
-    {
-      inventoryItem.Quantity = 1;
-      inventoryService.Add(inventoryItem);
-    }
-    else
-    {
-      inventoryItem = cartItemToInventoryItemConverter.Convert(cartItemRemoved);
-      inventoryItem.Quantity = 1;
-      inventoryService.Add(inventoryItem);
-    }
-    return Results.Ok(cartService.GetAll());
+    var inventoryItem = cartItemToInventoryItemConverter.Convert(cartItemRemoved);
+    inventoryItem.Quantity = 1;
+    inventoryService.Add(inventoryItem);
   }
-  return Results.NotFound("Item not found in cart.");
+  return Results.Ok(cartService.GetAll());
 });
 
 // Fallback to serve the HTML page
