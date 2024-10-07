@@ -22,32 +22,16 @@ app.MapGet("/api/inventory/{productCode}", (InventoryService inventoryService, s
   return item != null ? Results.Ok(item) : Results.NotFound();
 });
 
-// Add a new item to the inventory
 app.MapPost("/api/inventory", (InventoryService inventoryService, InventoryItem newItem) =>
 {
-  if (inventoryService.Add(newItem))
-  {
-    return Results.Created($"/api/inventory/{newItem.ProductCode}", newItem);
-  }
-  return Results.Conflict("Item with this product code already exists.");
-});
-
-app.MapPut("/api/inventory/{productCode}/quantity", (InventoryService inventoryService, string productCode, int quantity) =>
-{
-  if (inventoryService.UpdateQuantity(productCode, quantity))
-  {
-    return Results.Ok();
-  }
-  return Results.NotFound("Item not found.");
+  inventoryService.Add(newItem);
+  return Results.Created($"/api/inventory/{newItem.ProductCode}", newItem);
 });
 
 app.MapDelete("/api/inventory/{productCode}", (InventoryService inventoryService, string productCode) =>
 {
-  if (inventoryService.RemoveOne(productCode))
-  {
-    return Results.NoContent();
-  }
-  return Results.NotFound("Item not found.");
+  inventoryService.RemoveOne(productCode);
+  return Results.NoContent();
 });
 
 app.MapFallbackToFile("index.html");
