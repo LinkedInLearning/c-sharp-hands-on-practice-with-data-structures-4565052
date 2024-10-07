@@ -4,7 +4,6 @@ namespace ShoppingCartApp.Services
 {
   public class CartService
   {
-    private readonly List<CartItem> _cart = new();
 
     public IEnumerable<CartItem> GetAll()
     {
