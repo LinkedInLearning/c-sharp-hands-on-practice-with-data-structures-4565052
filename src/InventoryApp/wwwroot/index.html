@@ -19,6 +19,7 @@
     <button id="addButton">Add Item</button>
 
     <h2>Inventory List</h2>
+    <input type="text" id="searchInput" placeholder="Search by Product Code" />
     <ul id="inventoryList"></ul>
   </div>
 
@@ -26,11 +27,16 @@
     const apiUrl = '/api/inventory';
 
     document.getElementById('addButton').addEventListener('click', addItem);
+    document.getElementById('searchInput').addEventListener('input', searchInventory);
     fetchInventory();
 
     async function fetchInventory() {
       const response = await fetch(apiUrl);
       const items = await response.json();
+      displayInventory(items);
+    }
+
+    function displayInventory(items) {
       const inventoryList = document.getElementById('inventoryList');
       inventoryList.innerHTML = '';
       items.forEach(item => {
@@ -68,11 +74,24 @@
     }
 
     async function removeItem(productCode) {
-        await fetch(`${apiUrl}/${productCode}`, {
-          method: 'DELETE'
-        });
-        fetchInventory();
-      }
+      await fetch(`${apiUrl}/${productCode}`, {
+        method: 'DELETE'
+      });
+      fetchInventory();
+    }
+
+    async function searchInventory() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const response = await fetch(apiUrl);
+      const items = await response.json();
+
+      const filteredItems = items.filter(item => {
+        return item.productCode.toLowerCase().includes(searchTerm) ||
+          item.name.toLowerCase().includes(searchTerm);
+      });
+
+      displayInventory(filteredItems);
+    }
   </script>
 </body>
 
