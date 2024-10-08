@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "Hash": "W28YMEbBYAlSuvn74GlTut0Oh6sPzy1TpfW+oN6t390=",
+  "Source": "CustomerApp",
+  "BasePath": "_content/CustomerApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "CustomerApp/wwwroot",
+      "Source": "CustomerApp",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/CustomerApp/wwwroot/",
+      "BasePath": "_content/CustomerApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/CustomerApp/wwwroot/index.html",
+      "SourceId": "CustomerApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/CustomerApp/wwwroot/",
+      "BasePath": "_content/CustomerApp",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/index.html"
+    },
+    {
+      "Identity": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/CustomerApp/wwwroot/styles.css",
+      "SourceId": "CustomerApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/CustomerApp/wwwroot/",
+      "BasePath": "_content/CustomerApp",
+      "RelativePath": "styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/styles.css"
+    }
+  ]
+}

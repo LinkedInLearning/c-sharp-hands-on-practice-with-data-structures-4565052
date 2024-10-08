@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket Queue Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Ticket Queue Management</h1>
+    <div class="form-container">
+      <input type="text" id="customerName" placeholder="Customer Name" />
+      <input type="text" id="description" placeholder="Issue Description" />
+      <select id="priority">
+        <option value="" disabled selected>Select Priority</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button id="addTicketButton">Add Ticket</button>
+    </div>
+
+    <h2>Ticket Queue</h2>
+    <div class="ticket-columns">
+      <div class="ticket-column">
+        <h3>Open Tickets</h3>
+        <ul id="openTickets" class="ticket-list"></ul>
+      </div>
+      <div class="ticket-column">
+        <h3>In-Progress Tickets</h3>
+        <ul id="inProgressTickets" class="ticket-list"></ul>
+      </div>
+      <div class="ticket-column">
+        <h3>Closed Tickets</h3>
+        <ul id="closedTickets" class="ticket-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ticketApiUrl = '/api/tickets';
+
+    document.getElementById('addTicketButton').addEventListener('click', addTicket);
+    fetchTickets();
+
+    // Fetch all tickets and display them
+    async function fetchTickets() {
+      const response = await fetch(ticketApiUrl);
+      const tickets = await response.json();
+      displayTickets(tickets);
+    }
+
+    function formatTimestamp(timestamp) {
+      const date = new Date(timestamp);
+      // Format as MM/DD HH:MM AM/PM
+      const options = { month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+      return date.toLocaleString(undefined, options);
+    }
+
+
+    // Display tickets in the respective columns based on status
+    function displayTickets(tickets) {
+      const openTicketsList = document.getElementById('openTickets');
+      const inProgressTicketsList = document.getElementById('inProgressTickets');
+      const closedTicketsList = document.getElementById('closedTickets');
+
+      // Clear previous lists
+      openTicketsList.innerHTML = '';
+      inProgressTicketsList.innerHTML = '';
+      closedTicketsList.innerHTML = '';
+
+      tickets.forEach(ticket => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('ticket-item');
+        listItem.innerHTML = `
+          <div class="ticket-info">
+            <strong>${ticket.customerName}</strong>: ${ticket.description} <br /> <br />
+            <em>Status:</em> ${ticket.status} <br /> <br />
+            <em>Priority:</em> ${ticket.priority} <br /> <br />
+            <em>Created At:</em> ${formatTimestamp(ticket.createdAt)}
+          </div>
+          <div class="ticket-actions">
+            <button class="update-status-btn" data-id="${ticket.id}" data-status="in-progress">Mark In-Progress</button>
+            <button class="update-status-btn" data-id="${ticket.id}" data-status="closed">Mark Closed</button>
+            <button class="upgrade-priority-btn" data-id="${ticket.id}">Upgrade Priority</button>
+          </div>
+        `;
+
+        // Add ticket to the appropriate list based on status
+        if (ticket.status === 'open') {
+          openTicketsList.appendChild(listItem);
+        } else if (ticket.status === 'in-progress') {
+          inProgressTicketsList.appendChild(listItem);
+        } else if (ticket.status === 'closed') {
+          closedTicketsList.appendChild(listItem);
+        }
+      });
+
+      document.querySelectorAll('.update-status-btn').forEach(button => {
+        button.addEventListener('click', updateStatus);
+      });
+
+      document.querySelectorAll('.upgrade-priority-btn').forEach(button => {
+        button.addEventListener('click', upgradePriority);
+      });
+    }
+
+    // Add a new ticket
+    async function addTicket() {
+      const customerName = document.getElementById('customerName').value;
+      const description = document.getElementById('description').value;
+      const priority = document.getElementById('priority').value;
+
+      if (!customerName || !description || !priority) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      const newTicket = { customerName, description, priority };
+
+      await fetch(ticketApiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newTicket)
+      });
+
+      document.getElementById('customerName').value = '';
+      document.getElementById('description').value = '';
+      document.getElementById('priority').selectedIndex = 0; // Reset to default
+      fetchTickets();
+    }
+
+    // Update ticket status
+    async function updateStatus(event) {
+      const ticketId = event.target.getAttribute('data-id');
+      const newStatus = event.target.getAttribute('data-status');
+
+      await fetch(`${ticketApiUrl}/${ticketId}/status/${newStatus}`, {
+        method: 'PUT'
+      });
+
+      fetchTickets();
+    }
+
+    // Upgrade ticket priority
+    async function upgradePriority(event) {
+      const ticketId = event.target.getAttribute('data-id');
+
+      await fetch(`${ticketApiUrl}/${ticketId}/priority`, {
+        method: 'PUT'
+      });
+
+      fetchTickets();
+    }
+  </script>
+</body>
+
+</html>
