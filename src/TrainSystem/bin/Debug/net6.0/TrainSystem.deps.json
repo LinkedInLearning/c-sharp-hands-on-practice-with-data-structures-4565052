@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "TrainSystem/1.0.0": {
+        "runtime": {
+          "TrainSystem.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TrainSystem/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

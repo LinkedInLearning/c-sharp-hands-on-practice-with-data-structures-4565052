@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Train System</h1>
+    <div class="tracks">
+      <h2>Tracks</h2>
+      <div id="trackList">
+        <!-- Tracks will be populated here -->
+      </div>
+    </div>
+
+    <div class="queue">
+      <h2>Train Queue</h2>
+      <div id="trainQueue">
+        <!-- Train Queue will be populated here -->
+      </div>
+    </div>
+
+    <div class="controls">
+      <h2>Controls</h2>
+      <button onclick="arriveTrain()">Add Train to Queue</button>
+      <button onclick="assignTrainToTrack()">Assign Train to Track</button>
+      <button onclick="departTrain()">Depart Train from Track</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
