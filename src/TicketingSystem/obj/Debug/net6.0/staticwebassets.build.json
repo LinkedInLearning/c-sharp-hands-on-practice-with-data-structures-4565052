@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "Hash": "SoLVRtN6sZa0c7KDoFItrIg3Pus8yLGaT3iBrM3rZz0=",
+  "Source": "TicketingSystem",
+  "BasePath": "_content/TicketingSystem",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "TicketingSystem/wwwroot",
+      "Source": "TicketingSystem",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/TicketingSystem/wwwroot/",
+      "BasePath": "_content/TicketingSystem",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/TicketingSystem/wwwroot/index.html",
+      "SourceId": "TicketingSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/TicketingSystem/wwwroot/",
+      "BasePath": "_content/TicketingSystem",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/index.html"
+    },
+    {
+      "Identity": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/TicketingSystem/wwwroot/styles.css",
+      "SourceId": "TicketingSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/TicketingSystem/wwwroot/",
+      "BasePath": "_content/TicketingSystem",
+      "RelativePath": "styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/styles.css"
+    }
+  ]
+}

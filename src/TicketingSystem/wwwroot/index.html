@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Ticketing System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Ticketing System</h1>
+  <h2>Add Ticket</h2>
+  <form id="ticketForm">
+    <input type="text" id="owner" placeholder="Owner" required>
+    <textarea id="issueDescription" placeholder="Issue Description" required></textarea>
+    <select id="priority" required>
+      <option value="1">High</option>
+      <option value="2">Medium</option>
+      <option value="3">Low</option>
+    </select>
+    <button type="submit">Add Ticket</button>
+  </form>
+  <h2>Ticket Processing</h2>
+  <pre id="nextTicketDisplay"></pre>
+  <button id="dequeueTicket">Process Ticket</button>
+  <pre id="processedTicket"></pre>
+
+  <script>
+    document.getElementById('ticketForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const owner = document.getElementById('owner').value;
+      const issueDescription = document.getElementById('issueDescription').value;
+      const priority = parseInt(document.getElementById('priority').value);
+
+      const response = await fetch('/ticket/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ owner, issueDescription, priority }),
+      });
+
+      displayNextTicket();
+    });
+
+    document.getElementById('dequeueTicket').addEventListener('click', async () => {
+      processTicket();
+    });
+
+    async function displayNextTicket() {
+      const response = await fetch('/ticket/next');
+      const result = await response.json();
+      document.getElementById('nextTicketDisplay').textContent = JSON.stringify(result);
+    }
+
+    async function processTicket() {
+      const response = await fetch('/ticket/dequeue', { method: 'DELETE' });
+      const result = await response.json();
+      displayNextTicket();
+      document.getElementById('processedTicket').textContent = JSON.stringify(result);
+    }
+
+    displayNextTicket();
+    processTicket();
+  </script>
+</body>
+
+</html>
