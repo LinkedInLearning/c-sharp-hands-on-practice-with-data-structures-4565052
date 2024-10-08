@@ -27,9 +27,7 @@ async function loadTrainQueue() {
 
 async function arriveTrain() {
   const newTrain = {
-    id: Math.floor(Math.random() * 1000),
-    name: 'Train ' + Math.floor(Math.random() * 100),
-    origin: 'City ' + Math.floor(Math.random() * 10)
+    name: 'Train ' + Math.floor(Math.random() * 100)
   };
 
   await fetch('/arrive', {
