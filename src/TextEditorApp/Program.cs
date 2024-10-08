@@ -8,7 +8,6 @@ using TextEditorApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register TextEditorService as a singleton
 builder.Services.AddSingleton<TextEditorService>();
 
 var app = builder.Build();
