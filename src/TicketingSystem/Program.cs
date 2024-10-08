@@ -19,7 +19,7 @@ app.MapPost("/ticket/add", (Ticket ticket, TicketService ticketService) =>
 app.MapGet("/ticket/next", (TicketService ticketService) =>
 {
   var nextTicket = ticketService.GetNextTicket();
-  return nextTicket != null ? Results.Ok(nextTicket) : Results.NotFound("No tickets available.");
+  return nextTicket != null ? Results.Ok(nextTicket) : Results.NotFound("No tickets in the queue.");
 });
 
 app.MapDelete("/ticket/dequeue", (TicketService ticketService) =>
