@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Rate Limiter</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>API Rate Limiter</h1>
+    <label for="userId">Enter User ID:</label>
+    <input type="text" id="userId" placeholder="Enter your user ID" />
+    <button onclick="checkRateLimit()">Send Request</button>
+
+    <div id="response"></div>
+  </div>
+
+  <script>
+    async function checkRateLimit() {
+      const userId = document.getElementById('userId').value;
+      const responseElement = document.getElementById('response');
+
+      try {
+        const response = await fetch(`/api/RateLimiter/${userId}`);
+        const result = await response.json();
+
+        if (response.ok) {
+          responseElement.textContent = result.message;
+          responseElement.style.color = "green";
+        } else {
+          responseElement.textContent = result.message;
+          responseElement.style.color = "red";
+        }
+      } catch (error) {
+        responseElement.textContent = "Error: Unable to connect to server.";
+        responseElement.style.color = "red";
+      }
+    }
+  </script>
+</body>
+
+</html>

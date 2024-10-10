@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "Hash": "6kSPm2p1JT0DJIEIKvb5r73kFjzW3qMvOCZ1iTXGm9s=",
+  "Source": "ApiRateLimiter",
+  "BasePath": "_content/ApiRateLimiter",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ApiRateLimiter/wwwroot",
+      "Source": "ApiRateLimiter",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/ApiRateLimiter/wwwroot/",
+      "BasePath": "_content/ApiRateLimiter",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/ApiRateLimiter/wwwroot/index.html",
+      "SourceId": "ApiRateLimiter",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/ApiRateLimiter/wwwroot/",
+      "BasePath": "_content/ApiRateLimiter",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/index.html"
+    },
+    {
+      "Identity": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/ApiRateLimiter/wwwroot/styles.css",
+      "SourceId": "ApiRateLimiter",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/ApiRateLimiter/wwwroot/",
+      "BasePath": "_content/ApiRateLimiter",
+      "RelativePath": "styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/styles.css"
+    }
+  ]
+}
