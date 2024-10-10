@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "Hash": "+V04S+Ts6P6ZCbn8Kf+zSSrwiiQGAL0OOjvu/oBYoYM=",
+  "Source": "FlightReservationSystem",
+  "BasePath": "_content/FlightReservationSystem",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FlightReservationSystem/wwwroot",
+      "Source": "FlightReservationSystem",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/FlightReservationSystem/wwwroot/",
+      "BasePath": "_content/FlightReservationSystem",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/FlightReservationSystem/wwwroot/index.html",
+      "SourceId": "FlightReservationSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/FlightReservationSystem/wwwroot/",
+      "BasePath": "_content/FlightReservationSystem",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/index.html"
+    },
+    {
+      "Identity": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/FlightReservationSystem/wwwroot/styles.css",
+      "SourceId": "FlightReservationSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/FlightReservationSystem/wwwroot/",
+      "BasePath": "_content/FlightReservationSystem",
+      "RelativePath": "styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/styles.css"
+    }
+  ]
+}
