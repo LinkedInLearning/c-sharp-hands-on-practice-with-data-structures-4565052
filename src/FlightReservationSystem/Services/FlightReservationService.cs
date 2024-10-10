@@ -4,11 +4,6 @@ namespace FlightReservationSystem.Services
 {
   public class FlightReservationService
   {
-  
-    public FlightReservationService()
-    {
-
-    }
 
     public IEnumerable<Flight> GetAllFlights()
     {

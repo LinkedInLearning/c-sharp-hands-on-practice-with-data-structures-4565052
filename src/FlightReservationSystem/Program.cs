@@ -28,7 +28,7 @@ app.MapPost("/api/flights/book", (FlightBookingRequest request) =>
   {
     BookingStatus.BookedOnFlight => Results.Ok(new { message = "Booking successful. You are booked on the flight.", status = bookingStatus.ToString() }),
     BookingStatus.AddedToWaitlist => Results.Ok(new { message = "Flight is full. You are added to the waitlist.", status = bookingStatus.ToString() }),
-    _ => Results.BadRequest(new { message = "Booking failed. Bad request.", status = BookingStatus.BadRequest.ToString() })
+    _ => Results.BadRequest(new { message = "Booking failed. Bad request.", status = BookingStatus.NotBooked.ToString() })
   };
 });
 
