@@ -4,6 +4,6 @@ namespace FlightReservationSystem.Models
   {
     BookedOnFlight,
     AddedToWaitlist,
-    BadRequest
+    NotBooked
   }
 }
