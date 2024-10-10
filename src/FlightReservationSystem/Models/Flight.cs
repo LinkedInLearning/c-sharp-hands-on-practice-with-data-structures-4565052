@@ -31,7 +31,6 @@ namespace FlightReservationSystem.Models
 
     }
 
-    public int AvailableSeats => /* TODO: implement */
     public /* TODO: Add data structure */ Passengers => return _passengers
 
     public /* TODO: Add data structure */ Waitlist => return _waitlist
