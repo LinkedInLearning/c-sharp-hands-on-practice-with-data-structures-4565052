@@ -18,7 +18,6 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/src/CustomerApp/CustomerApp.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary;ForceNoAlign"
       ],
