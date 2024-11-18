@@ -10,8 +10,6 @@ class Program
     student.AddGrade(85);
     student.AddGrade(95);
 
-    student.RemoveFailingGrades();
-
     student.DisplayGrades();
   }
 }
