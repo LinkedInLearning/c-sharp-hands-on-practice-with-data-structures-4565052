@@ -1,0 +1,15 @@
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/bin/Debug/net6.0/src
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/bin/Debug/net6.0/src.deps.json
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/bin/Debug/net6.0/src.runtimeconfig.json
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/bin/Debug/net6.0/src.dll
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/bin/Debug/net6.0/src.pdb
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/obj/Debug/net6.0/src.csproj.AssemblyReference.cache
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/obj/Debug/net6.0/src.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/obj/Debug/net6.0/src.AssemblyInfoInputs.cache
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/obj/Debug/net6.0/src.AssemblyInfo.cs
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/obj/Debug/net6.0/src.csproj.CoreCompileInputs.cache
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/obj/Debug/net6.0/src.dll
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/obj/Debug/net6.0/refint/src.dll
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/obj/Debug/net6.0/src.pdb
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/obj/Debug/net6.0/src.genruntimeconfig.cache
+/workspaces/c-sharp-hands-on-practice-with-data-structures-4565052/src/obj/Debug/net6.0/ref/src.dll
