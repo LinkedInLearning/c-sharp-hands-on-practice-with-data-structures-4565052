@@ -18,7 +18,7 @@ namespace InventoryApp.Services
 
     public void Add(InventoryItem newItem)
     {
-
+      return null;
     }
 
     public void RemoveOne(string productCode)
