@@ -14,6 +14,10 @@ namespace TodoListApp.Services
 
     public void Add(TodoItem todoItem)
     {
+      if (_count == _tasks.Length)
+      {
+        ResizeArray();
+      }
       todoItem.Id = _count;
       _tasks[_count] = todoItem;
       _count++;
@@ -34,6 +38,12 @@ namespace TodoListApp.Services
           break;
         }
       }
+    }
+
+    private void ResizeArray() {
+      var newArray = new TodoItem[_tasks.Length * 2];
+      Array.Copy(_tasks, newArray, _tasks.Length);
+      _tasks = newArray;
     }
   }
 }
