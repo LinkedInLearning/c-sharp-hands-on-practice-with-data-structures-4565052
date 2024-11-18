@@ -7,7 +7,6 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/src/CustomerApp/CustomerApp.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary;ForceNoAlign"
       ],
@@ -19,7 +18,6 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/src/CustomerApp/CustomerApp.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary;ForceNoAlign"
       ],
@@ -32,8 +30,7 @@
       "args": [
         "watch",
         "run",
-        "--project",
-        "${workspaceFolder}/src/CustomerApp/CustomerApp.csproj"
+        "--project"
       ],
       "problemMatcher": "$msCompile"
     }
