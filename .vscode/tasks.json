@@ -7,7 +7,6 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/src/CustomerApp/CustomerApp.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary;ForceNoAlign"
       ],
@@ -33,7 +32,6 @@
         "watch",
         "run",
         "--project",
-        "${workspaceFolder}/src/CustomerApp/CustomerApp.csproj"
       ],
       "problemMatcher": "$msCompile"
     }
