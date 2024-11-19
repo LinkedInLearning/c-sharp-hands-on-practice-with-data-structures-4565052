@@ -19,7 +19,7 @@ namespace TextEditorApp.Services
 
     public bool Undo()
     {
-      
+
     }
 
     public bool Redo()
