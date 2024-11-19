@@ -13,7 +13,7 @@
     processor.AddJob("Document4.pdf");
     processor.AddJob("Document5.pdf");
 
-    Console.WriteLine($"Printing document: {processor.GetNextJob()}");
+    Console.WriteLine($"Printing document: {processor.GetNextPrintJob()}");
 
     processor.ClearJobs();
 
