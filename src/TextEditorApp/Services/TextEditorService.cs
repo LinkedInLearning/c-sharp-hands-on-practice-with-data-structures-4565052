@@ -11,7 +11,6 @@ namespace TextEditorApp.Services
     {
       _undoStack.Push(_currentText);
       _currentText += newText;
-
     }
 
     public void ClearText()
