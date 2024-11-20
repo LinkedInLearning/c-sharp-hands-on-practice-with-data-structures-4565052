@@ -9,30 +9,35 @@ namespace FlightReservationSystem.Models
     public string FlightNumber { get; }
     public string Destination { get; }
     public int TotalSeats { get; }
-    private /* TODO: Add data structure */  _passengers;
-    private /* TODO: Add data structure */ > _waitlist;
+    private HashSet<Passenger> _passengers;
+    private Queue<Passenger> _waitlist;
 
     public Flight(string flightNumber, string destination, int totalSeats)
     {
       FlightNumber = flightNumber;
       Destination = destination;
       TotalSeats = totalSeats;
-      _passengers = /* Initialize passengers attribute */
-      _waitlist = /* Initialize waitlist attribute */
+      _passengers = new HashSet<Passenger>();
+      _waitlist = new Queue<Passenger>();
     }
 
     public bool BookSeat(Passenger passenger)
     {
-
+      if (TotalSeats - _passengers.Count > 0)
+      {
+        _passengers.Add(passenger);
+        return true;
+      }
+      return false;
     }
 
     public void AddToWaitlist(Passenger passenger)
     {
-
+      _waitlist.Enqueue(passenger);
     }
 
-    public /* TODO: Add data structure */ Passengers => _passengers;
+    public HashSet<Passenger> Passengers => _passengers;
 
-    public /* TODO: Add data structure */ Waitlist => _waitlist;
+    public Queue<Passenger> Waitlist => _waitlist;
   }
 }
