@@ -31,8 +31,8 @@ namespace FlightReservationSystem.Models
 
     }
 
-    public /* TODO: Add data structure */ Passengers => return _passengers
+    public /* TODO: Add data structure */ Passengers => _passengers;
 
-    public /* TODO: Add data structure */ Waitlist => return _waitlist
+    public /* TODO: Add data structure */ Waitlist => _waitlist;
   }
 }
