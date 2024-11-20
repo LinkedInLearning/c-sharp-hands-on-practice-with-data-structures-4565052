@@ -10,7 +10,7 @@ namespace FlightReservationSystem.Models
     public string Destination { get; }
     public int TotalSeats { get; }
     private /* TODO: Add data structure */  _passengers;
-    private /* TODO: Add data structure */ > _waitlist;
+    private /* TODO: Add data structure */ _waitlist;
 
     public Flight(string flightNumber, string destination, int totalSeats)
     {
@@ -31,8 +31,8 @@ namespace FlightReservationSystem.Models
 
     }
 
-    public /* TODO: Add data structure */ Passengers => return _passengers
+    public /* TODO: Add data structure */ Passengers => _passengers;
 
-    public /* TODO: Add data structure */ Waitlist => return _waitlist
+    public /* TODO: Add data structure */ Waitlist => _waitlist;
   }
 }
